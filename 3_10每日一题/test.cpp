@@ -4,6 +4,7 @@
 
 using namespace std;
 
+#if 0
 bool IsFibonacci(long num){
 	int a = 0;
 	int b = 1;
@@ -39,6 +40,45 @@ int main(){
 	}
 	long result = temp_left < temp_right ? temp_left : temp_right;
 	cout << result;
+	system("pause");
+	return 0;
+}
+#endif
+
+#include<string>
+
+class Parenthesis {
+public:
+	bool chkParenthesis(string A, int n) {
+		if ((int)A.size() != n){
+			return false;
+		}
+		if (n == 0 || n == 1){
+			return false;
+		}
+		int count = 0;
+		for (auto it : A){
+			if (count < 0){
+				return false;
+			}
+			if (it == '('){
+				count++;
+			}
+			if (it == ')'){
+				count--;
+			}
+		}
+		if (count != 0){
+			return false;
+		}
+		return true;
+	}
+};
+
+int main(){
+	Parenthesis s;
+	bool ret = s.chkParenthesis("()(()a()", 8);
+	cout << ret << endl;
 	system("pause");
 	return 0;
 }
